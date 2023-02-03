@@ -12,18 +12,22 @@
         //test connection
         //echo "Connected successfully";
 
+        //Check if the form was submitted
         if(isset($_POST["login"])){
-            //If one fiel is empty, return an error message
-            if(empty($_POST["username"]) || $_POST["passwd"]){
-                $message = '<label>All fields are required</label>';
-            }else{
+
+            //If either field is empty, return an error message
+            if(empty($_POST["username"]) || empty($_POST["pass"])){
+                $message = "All fields are required";
+            }            
+            //If both field are filled, check the database
+            else if(!empty($_POST["username"]) || !empty($_POST["pass"])){
                 //Otherwise, find the user
-                $query = "SELECT * FROM user WHERE username=:username AND pass=:passwd";
+                $query = "SELECT * FROM user WHERE username=:username AND pass=:pass";
                 $statement = $conn->prepare($query);
                 $statement->execute(
                     array(
                         'username'=>$_POST["username"],
-                        'pass'=>$_POST["passwd"]
+                        'pass'=>$_POST["pass"]
                     )
                 );
 
@@ -36,14 +40,15 @@
                     header("Location:login_success.php");
                 }
 
-                //Otherwise, throw an error message
+                //Otherwise, if there is no match, throw an error message
                 else{
-                    $message= '<label>Login incorret</label>';
+                    $message= "Login incorrect";
                 }
             }
         }
 
-    } catch(PDOException $error) {
+        //If connection failed, throw error message 
+    }catch(PDOException $error) {
         $message = "Connection failed: " . $error->getMessage();
     }
 ?>
@@ -102,7 +107,7 @@
                     </div>
                     -->
                     <div class="form-floating">
-                        <input type="password" class="form-control" id="floatingPassword" onfocus="this.value=''" name="passwd">
+                        <input type="password" class="form-control" id="floatingPassword" onfocus="this.value=''" name="pass">
                         <label for="floatingPassword">Password</label>
                     </div>
 
@@ -110,7 +115,7 @@
                         <label><input type="checkbox" value="remember-me"> Remember me</label>
                     </div>
                     
-                    <input class="w-100 btn btn-lg btn-primary" type="submit" value="Sign in" name="login">
+                    <button class="w-100 btn btn-lg btn-primary" type="submit" name="login">Sign in</button>
                     
                     <p class="mt-5 mb-3 text-muted">&copy; 2017–2022</p>
                 </form>       
