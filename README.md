@@ -1,4 +1,4 @@
-# task-manager
+# task-manager-php-mysql-javascript
 Author: Baron T. 
 Initial creation date: 01 Feb 2023
 Peoject name: Task Manager
