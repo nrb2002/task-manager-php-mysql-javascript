@@ -16,9 +16,8 @@
             //If one fiel is empty, return an error message
             if(empty($_POST["username"]) || $_POST["passwd"]){
                 $message = '<label>All fields are required</label>';
-            }
-            //Otherwise, find the user
-            else{
+            }else{
+                //Otherwise, find the user
                 $query = "SELECT * FROM user WHERE username=:username AND pass=:passwd";
                 $statement = $conn->prepare($query);
                 $statement->execute(
