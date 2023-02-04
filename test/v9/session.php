@@ -5,11 +5,11 @@
     if(isset($_SESSION['username'])){        
         $user = $_SESSION["username"];
 
-        echo '<h3>Welcome '.$user.'!</h3>';
+        //echo '<h3>Welcome '.$user.'!</h3>';
 
     }else{
         session_abort();
-        header("Location:index.php");        
+        header("Location:./");        
     }
 
 
