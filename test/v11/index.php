@@ -1,56 +1,8 @@
 <?php
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "members";
-
-    try {
-        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-        
-        // set the PDO error mode to exception
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        //test connection
-        //echo "Connected successfully";
-
-        //Check if the form was submitted
-        if(isset($_POST["login"])){
-
-            //If either field is empty, return an error message
-            if(empty($_POST["username"]) || empty($_POST["pass"])){
-                $message = "All fields are required";
-            }            
-            //If both field are filled, check the database
-            else if(!empty($_POST["username"]) || !empty($_POST["pass"])){
-                //Otherwise, find the user
-                $query = "SELECT * FROM user WHERE username=:username AND pass=:pass";
-                $statement = $conn->prepare($query);
-                $statement->execute(
-                    array(
-                        'username'=>$_POST["username"],
-                        'pass'=>$_POST["pass"]
-                    )
-                );
-
-                //Count the number of matches
-                $count = $statement->rowCount();
-
-                //If there is at least one match, then set session variables and redirect to user page
-                if($count>0){
-                    $_SESSION["username"] = $_POST["username"];
-                    header("Location:login_success.php");
-                }
-
-                //Otherwise, if there is no match, throw an error message
-                else{
-                    $message= "Login incorrect";
-                }
-            }
-        }
-
-        //If connection failed, throw error message 
-    }catch(PDOException $error) {
-        $message = "Connection failed: " . $error->getMessage();
-    }
+    session_start();
+    session_destroy();
+    include('database/config.php');//Import the server connect to allow access to the database
+    require_once ('database/login.php'); //Import the login form processor
 ?>
 
 
@@ -81,7 +33,7 @@
         <!-- Custom styles for this template -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     
-        <link href="style.css" rel="stylesheet">
+        <link href="styles/main.css" rel="stylesheet">
     </head>
     <body class="text-center">
         
@@ -124,6 +76,8 @@
 
 
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-    
+            <script src="scripts/script.js"></script>
+
+        
     </body>
 </html>
