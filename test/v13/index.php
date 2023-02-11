@@ -2,7 +2,8 @@
     session_start();
     session_destroy();
     include('database/config.php');//Import the server connect to allow access to the database
-    require_once ('database/login.php'); //Import the login form processor
+    include ('database/login.php'); //Import the login form processor
+    //include ("session.php");
 ?>
 
 
