@@ -1,8 +1,10 @@
 $(document).ready(function(){
 	fetch();
+	getGroup();		//populate the dropdown list with family groups sorted by name
 	//add
-	$('#addnew').click(function(){
-		$('#add').modal('show');
+	$('#addnew').click(function(){  //When the Add New Family button is clicked
+		$('#add').modal('show');   //Open the add modal window
+		
 	});
 	$('#addForm').submit(function(e){
 		e.preventDefault();
@@ -98,12 +100,24 @@ $(document).ready(function(){
 
 });
 
+//populate the table with an id of tbody, which can be found in the index page
+//the data processing is done in fetch.php and the result is appended to the table
 function fetch(){
 	$.ajax({
 		method: 'POST',
 		url: 'fetch.php',
 		success: function(response){
-			$('#tbody').html(response);
+			$('#tbody').html(response); 			
+		}
+	});
+}
+
+function getGroup(){
+	$.ajax({
+		method: 'POST',
+		url: 'fetch_group.php',
+		success: function(response){
+			$('.family_group').html(response);
 		}
 	});
 }
@@ -127,6 +141,8 @@ function getDetails(id){
 				$('.lastname').val(response.data.lastname);
 				$('.phone').val(response.data.phone);
 				$('.email').val(response.data.email);
+				$('.address').val(response.data.address);
+				$('.group_id').val(response.data.group_id);
 				$('.fullname').html(response.data.firstname + ' ' + response.data.lastname);
 			}
 		}
