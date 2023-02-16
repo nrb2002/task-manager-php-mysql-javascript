@@ -78,7 +78,7 @@
 						<button class="close"><span aria-hidden="true">&times;</span></button>
 						<span id="alert_message"></span>
 					</div>  
-					<table class="table table-bordered table-striped table-hover table-responsive" style="margin-top:20px;">
+					<table class="table table-bordered table-striped table-hover table-responsive text-center" style="margin-top:20px;">
 						<thead >
 							<th>ID</th>
 							<th>Head's Firstname</th>

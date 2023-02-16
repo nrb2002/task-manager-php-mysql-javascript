@@ -1,9 +1,10 @@
 $(document).ready(function(){
 	fetch();
-	getGroup();		//populate the dropdown list with family groups sorted by name
+	
 	//add
 	$('#addnew').click(function(){  //When the Add New Family button is clicked
 		$('#add').modal('show');   //Open the add modal window
+		getGroup();		//populate the dropdown list with family groups sorted by name
 		
 	});
 	$('#addForm').submit(function(e){
@@ -34,7 +35,7 @@ $(document).ready(function(){
 	//edit
 	$(document).on('click', '.edit', function(){
 		var id = $(this).data('id');
-		getDetails(id);
+		getDetails(id);		
 		$('#edit').modal('show');
 	});
 	$('#editForm').submit(function(e){
@@ -117,7 +118,7 @@ function getGroup(){
 		method: 'POST',
 		url: 'fetch_group.php',
 		success: function(response){
-			$('.family_group').html(response);
+			$('#family_group').html(response);
 		}
 	});
 }
@@ -142,7 +143,7 @@ function getDetails(id){
 				$('.phone').val(response.data.phone);
 				$('.email').val(response.data.email);
 				$('.address').val(response.data.address);
-				$('.group_id').val(response.data.group_id);
+				$('.edit_group').val(response.data.group_id);
 				$('.fullname').html(response.data.firstname + ' ' + response.data.lastname);
 			}
 		}

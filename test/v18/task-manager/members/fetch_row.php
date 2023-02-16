@@ -8,10 +8,10 @@
 
 	try{
 		$id = $_POST['id'];
-		$stmt = $db->prepare("SELECT * FROM family WHERE id = :id");
-		$stmt->bindParam(':id', $id);
-		$stmt->execute();
-		$output['data'] = $stmt->fetch();
+		$sql = $db->prepare("SELECT * FROM family WHERE id = :id");
+		$sql->bindParam(':id', $id);
+		$sql->execute();
+		$output['data'] = $sql->fetch();
 	}
 	catch(PDOException $e){
 		$output['error'] = true;
