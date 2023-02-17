@@ -1,6 +1,5 @@
 html,
 body {
-  padding-top:0;
   overflow-x: hidden; /* Prevent scroll on narrow devices */
 }
 

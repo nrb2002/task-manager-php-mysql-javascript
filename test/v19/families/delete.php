@@ -1,5 +1,5 @@
 <?php
-	include_once('../db/connection.php');
+	include_once('connection.php');
 
 	$output = array('error' => false);
 
@@ -7,7 +7,7 @@
 	$db = $database->open();
 	try{
 		$sql = "DELETE FROM family WHERE id = '".$_POST['id']."'";
-		//if-else statement is executing our query
+		//if-else statement in executing our query
 		if($db->exec($sql)){
 			$output['message'] = 'Family deleted successfully';
 		}

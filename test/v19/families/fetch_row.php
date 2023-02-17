@@ -1,5 +1,5 @@
 <?php
-	include_once('../db/connection.php');
+	include_once('connection.php');
 
 	$output = array('error' => false);
 
@@ -8,10 +8,10 @@
 
 	try{
 		$id = $_POST['id'];
-		$sql = $db->prepare("SELECT * FROM family WHERE id = :id");
-		$sql->bindParam(':id', $id);
-		$sql->execute();
-		$output['data'] = $sql->fetch();
+		$stmt = $db->prepare("SELECT * FROM family WHERE id = :id");
+		$stmt->bindParam(':id', $id);
+		$stmt->execute();
+		$output['data'] = $stmt->fetch();
 	}
 	catch(PDOException $e){
 		$output['error'] = true;

@@ -1,6 +1,6 @@
 <?php
   session_start(); //Start session
-  ob_start(); //Prevent redirection errors
+  //ob_start(); //Prevent redirection errors
   include ("session.php");//Import session manager
   include ("database/config.php");
   require_once ("database/edit-profile.php"); //Import the edit profile php
@@ -12,27 +12,28 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Profile - <?php echo $_SESSION["username"]; ?></title>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>User Profile - <?php echo $_SESSION["username"]; ?></title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <link rel="stylesheet" href="styles/main.css">
-    <!-- Custom styles for this template -->
-    <link href="styles/welcome.css" rel="stylesheet">
-    
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+      <link rel="stylesheet" href="styles/main.css">
+      <!-- Custom styles for this template -->
+      <link href="styles/welcome.css" rel="stylesheet">
+      
 
-    <!-- Favicons -->
-    <link rel="apple-touch-icon" href="/docs/5.2/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
-    <link rel="icon" href="/docs/5.2/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
-    <link rel="icon" href="/docs/5.2/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
-    <link rel="manifest" href="/docs/5.2/assets/img/favicons/manifest.json">
-    <link rel="mask-icon" href="/docs/5.2/assets/img/favicons/safari-pinned-tab.svg" color="#712cf9">
-    <link rel="icon" href="/docs/5.2/assets/img/favicons/favicon.ico">
-    <meta name="theme-color" content="#712cf9">      
+      <!-- Favicons -->
+      <link rel="apple-touch-icon" href="/docs/5.2/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+      <link rel="icon" href="/docs/5.2/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+      <link rel="icon" href="/docs/5.2/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+      <link rel="manifest" href="/docs/5.2/assets/img/favicons/manifest.json">
+      <link rel="mask-icon" href="/docs/5.2/assets/img/favicons/safari-pinned-tab.svg" color="#712cf9">
+      <link rel="icon" href="/docs/5.2/assets/img/favicons/favicon.ico">
+      <meta name="theme-color" content="#712cf9">
+
+      
   </head>
-
   <body>
     <?php include "nav.php";?><!--Import nav bar-->
 

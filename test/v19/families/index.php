@@ -1,3 +1,8 @@
+<?php
+	session_start();
+	include '../session.php';
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,7 +11,9 @@
 	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
 </head>
 <body>
+	
 <div class="container">
+	<header><br><?php echo "Welcome, "."<i>".$active_user."</i>";?><hr></header>
 	<h1 class="page-header text-center">Families Directory</h1>
 	<div class="row">
 		<div class="col-sm-8 col-sm-offset-2">

@@ -1,5 +1,5 @@
 <?php
-	include_once('../db/connection.php');
+	include_once('connection.php');
 
 	$output = array('error' => false);
 
@@ -9,12 +9,9 @@
 		$id = $_POST['id'];
 		$firstname = $_POST['firstname'];
 		$lastname = $_POST['lastname'];
-		$phone = $_POST['phone'];
-		$email = $_POST['email'];
 		$address = $_POST['address'];
-		$group_id = $_POST['group_id'];
 
-		$sql = "UPDATE family SET firstname = '$firstname', lastname = '$lastname', phone = '$phone', email = '$email', address = '$address', group_id = '$group_id' WHERE id = '$id' ";
+		$sql = "UPDATE family SET firstname = '$firstname', lastname = '$lastname', address = '$address' WHERE id = '$id'";
 		//if-else statement in executing our query
 		if($db->exec($sql)){
 			$output['message'] = 'Family updated successfully';
